@@ -6,7 +6,7 @@
 # The name of this app. Must be unique within a project.
 app:
     # The runtime the application uses.
-    type: golang:1.16
+    type: golang:1.22
     # The hooks executed at various points in the lifecycle of the application.
     hooks:
         build: |
