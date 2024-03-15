@@ -1,10 +1,10 @@
-# Basic Go for Platform.sh
+> [!WARNING]
+> **Unmaintained code example**
+>
+> Public code examples are proof of concepts.
+> Feel free to use them as a starting reference for your work, but remember that they are generally unmaintained once published.
 
-<p align="center">
-<a href="https://console.platform.sh/projects/create-project?template=https://raw.githubusercontent.com/platformsh/template-builder/master/templates/golang/.platform.template.yaml&utm_content=golang&utm_source=github&utm_medium=button&utm_campaign=deploy_on_platform">
-    <img src="https://platform.sh/images/deploy/lg-blue.svg" alt="Deploy on Platform.sh" width="180px" />
-</a>
-</p>
+# Basic Go for Platform.sh
 
 This template provides the most basic configuration for running a custom Go project using Go modules.  It demonstrates the Platform.sh `config-reader` library and connecting to a MariaDB instance.  It can be used to build a very rudimentary application but is intended primarily as a documentation reference.
 
