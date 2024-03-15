@@ -4,18 +4,30 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	sqldsn "github.com/platformsh/config-reader-go/v2/sqldsn"
-	psh "github.com/platformsh/config-reader-go/v2"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 
-	// The Config Reader library provides Platform.sh environment information mapped to Go structs.
-	config, err := psh.NewRuntimeConfig()
-	if err != nil {
-		panic("Not in a Platform.sh Environment.")
+	port := "8000"
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
+
+	creds := ""
+	if os.Getenv("PLATFORM_BRANCH") != "" || os.Getenv("PLATFORM_RELATIONSHIPS") != "" {
+
+		creds = fmt.Sprintf(
+			"%s:%s@tcp(%s:%s)/%s?charset=utf8", 
+			os.Getenv("DATABASE_USERNAME"), 
+			os.Getenv("DATABASE_PASSWORD"), 
+			os.Getenv("DATABASE_HOST"),
+			os.Getenv("DATABASE_PORT"),
+			os.Getenv("DATABASE_PATH"),
+		)
+
 	}
 
 	// Set up an extremely simple web server response.
@@ -25,33 +37,21 @@ func main() {
 		fmt.Fprintf(w, "Hello, world! - A simple Go template for Platform.sh\n\n")
 
 		// Run some background SQL, just to prove we can.
-		trySql(config, w)
+		trySql(creds, w)
 
 	})
 
 		// The port to listen on is defined by Platform.sh.
-		log.Fatal(http.ListenAndServe(":"+config.Port(), nil))
+		log.Fatal(http.ListenAndServe(":"+port, nil))
 
 }
 
 // trySql simply connects to a MySQL server defined by Platform.sh and
 // writes and reads from it.  This is not particularly useful code,
 // but demonstrates how you can leverage the Platform.sh Config Reader library.
-func trySql(conf *psh.RuntimeConfig, w http.ResponseWriter) {
+func trySql(conn_str string, w http.ResponseWriter) {
 
-		// Accessing the database relationship Credentials struct
-	credentials, err := conf.Credentials("database")
-	if err != nil {
-		panic(err)
-	}
-
-	// Using the sqldsn formatted credentials package
-	formatted, err := sqldsn.FormattedCredentials(credentials)
-	if err != nil {
-		panic(err)
-	}
-
-	db, err := sql.Open("mysql", formatted)
+	db, err := sql.Open("mysql", conn_str)
 	checkErr(err)
 
 	// Force MySQL into modern mode.
