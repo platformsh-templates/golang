@@ -1,7 +1,8 @@
 applications:
     app:
-        stack:
-          - "golang@1.22"
+        type: golang:1.22
+        # stack:
+        #   - "golang@1.22"
         hooks:
             build: |
                 go build -o bin/app
