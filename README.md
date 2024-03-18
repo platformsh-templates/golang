@@ -22,3 +22,8 @@ Go is a statically typed, compiled language with an emphasis on easy concurrency
 * MariaDB 11.2
 * Automatic TLS certificates
 * Git module-based build
+
+## Configuration
+
+This repository contains configuration files within the `.platform` and `.upsun` directories for deploying to Platform.sh and Upsun, respectively.
+If you deploy on Platform.sh, feel free to remove the Upsun config files (and vice versa).
