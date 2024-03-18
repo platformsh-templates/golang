@@ -4,7 +4,9 @@
 > Public code examples for Platform.sh, Upsun, and Blackfire.io are proof of concepts.
 > Feel free to use them as a starting reference for your work, but know that they are generally unmaintained once published.
 
-![golang](https://socialify.git.ci/platformsh/golang/image?description=1&descriptionEditable=%E2%9A%97%EF%B8%8F%20Deploy%20often.%20%F0%9F%9A%80%20Deploy%20Friday!&font=Jost&language=1&logo=https%3A%2F%2Fplatform.sh%2Fplatform-logos%2Ficons%2Fwhite%2FPlatformsh_Icon_white.svg&name=1&owner=1&pattern=Solid&theme=Dark)
+![golang](https://socialify.git.ci/platformsh/golang/image?description=1&descriptionEditable=&font=Jost&logo=https%3A%2F%2Fplatform.sh%2Fplatform-logos%2Ficons%2Fwhite%2FPlatformsh_Icon_white.svg&name=1&pattern=Solid&theme=Dark)
+
+<img src="header.svg" alt="Header image" />
 
 This template provides the most basic configuration for running a custom Go project using Go modules.  It demonstrates the Platform.sh `config-reader` library and connecting to a MariaDB instance.  It can be used to build a very rudimentary application but is intended primarily as a documentation reference.
 
