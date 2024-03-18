@@ -27,3 +27,5 @@ Go is a statically typed, compiled language with an emphasis on easy concurrency
 
 This repository contains configuration files within the `.platform` and `.upsun` directories for deploying to Platform.sh and Upsun, respectively.
 If you deploy on Platform.sh, feel free to remove the Upsun config files (and vice versa).
+
+Join the [Platform.sh](https://docs.platform.sh/#connect-with-us) and [Upsun](https://docs.upsun.com/#connect-with-us) community, and catch the post behind this repository - [_Au revoir to templates: Go on Upsun_](https://support.platform.sh/hc/en-us/community/posts/17707674764050-Templates-migrations-Go).
