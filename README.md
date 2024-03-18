@@ -22,9 +22,3 @@ Go is a statically typed, compiled language with an emphasis on easy concurrency
 * MariaDB 11.2
 * Automatic TLS certificates
 * Git module-based build
-
-## Customizations
-
-This project relies on Go module support in Go 1.11 and later.  You should commit your `go.mod` and `go.sum` files to Git, but not the `vendor` directory.
-
-The following files and additions make the framework work.  If using this project as a reference for your own existing project, replicate the changes below to your project.
