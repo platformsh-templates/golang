@@ -1,6 +1,7 @@
 applications:
     app:
-        type: golang:1.22
+        stack:
+          - "golang@1.22"
         hooks:
             build: |
                 go build -o bin/app
@@ -20,12 +21,3 @@ applications:
 services:
     database:
         type: mariadb:11.2
-
-# routes:
-#     "https://{default}/":
-#         type: upstream
-#         upstream: "app:http"
-
-#     "https://www.{default}/":
-#         type: redirect
-#         to: "https://{default}/"
