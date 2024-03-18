@@ -1,0 +1,31 @@
+applications:
+    app:
+        type: golang:1.22
+        hooks:
+            build: |
+                go build -o bin/app
+        relationships:
+            database: "db:mysql"
+        web:
+            upstream:
+                socket_family: tcp
+                protocol: http
+            commands:
+                start: ./bin/app
+            locations:
+                /:
+                    allow: false
+                    passthru: true
+
+services:
+    db:
+        type: mariadb:11.2
+
+routes:
+    "https://{default}/":
+        type: upstream
+        upstream: "app:http"
+
+    "https://www.{default}/":
+        type: redirect
+        to: "https://{default}/"
