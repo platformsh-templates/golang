@@ -5,7 +5,7 @@ applications:
             build: |
                 go build -o bin/app
         relationships:
-            database: "db:mysql"
+            database:
         web:
             upstream:
                 socket_family: tcp
@@ -18,14 +18,14 @@ applications:
                     passthru: true
 
 services:
-    db:
+    database:
         type: mariadb:11.2
 
-routes:
-    "https://{default}/":
-        type: upstream
-        upstream: "app:http"
+# routes:
+#     "https://{default}/":
+#         type: upstream
+#         upstream: "app:http"
 
-    "https://www.{default}/":
-        type: redirect
-        to: "https://{default}/"
+#     "https://www.{default}/":
+#         type: redirect
+#         to: "https://{default}/"
